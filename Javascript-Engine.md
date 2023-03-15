@@ -37,7 +37,7 @@ In this approach, whole program gets compiled into machine language at once and 
 
 #### Call Stack
 
-JavaScript is a single-threaded language i.e. it has only one call stack and it can process one statement at time. Call Stack follows the __Last in, First Out__ principle which means it always process the call on top of the stack at first.
+JavaScript is a single-threaded language i.e. it has only one call stack and it can process one statement at time. The call stack keeps track of functions to be executed. Call Stack follows the __Last in, First Out__ principle which means it always process the call on top of the stack at first.
 
 When a function is called, it is added to the stack. When a function calls another function, it's added on top of the calling function.  
 
@@ -59,23 +59,23 @@ To summarize,
 
 At this point, the call stack status is currently -
 
-	______________________
-			Call Stack
-	______________________
+_____________________
+	Call Stack
+_____________________
 
-			sayHello()
+	sayHello()
 
-			greet()
-	_______________________
+	greet()
+______________________
 
 	- sayhello() is now at the top of the stack and is executed. It prints out __Hello__ to the console and is removed from the stack.
 
-		______________________
-			Call Stack
-		______________________
+______________________
+	Call Stack
+______________________
 
-				greet()
-		_______________________
+	greet()
+_______________________
 
 	- Now, greet() is at the top of the stack and prints out __I am robot__ to the console and thus removed from the stack.
 
@@ -86,4 +86,45 @@ The cal stack is empty now and the final output would look like this:
 "I am a robot."
 ```
 
+#### Memory Heap
 
+JavaScript stores objects and functions in heap. Unlike stack, JavaScript engine doesn't allocate a fixed memory for these objects. Instead, more spaces will be allocated as needed. This is called the __dynamic memory allocation.__
+
+#### Stack vs Heap
+
+##### Stack 
+	- Primitive values and references
+	- Size is known at compile time
+	- Allocates a fixed amount of memory.
+
+#### Heap
+	- Objects and functions
+	- Size is known at run time
+	- No size limit per object
+
+#### Examples
+
+```js
+const myProfile = {
+	firstName: "Prabesh",
+	lastName: "Thapa",
+	age: 23,
+}
+```
+
+__JavaScript allocates memory for this object in stack.__
+___But the actual values of the objects are still primitive. Hence, they are stored in stack.___
+
+```js
+const hobbies=["anime", "football", "cricket"];
+```
+
+__Arrays are objects as well in JavaScript. Hence, they are stored in heap.__
+
+#### References in JavaScript
+
+All variables first point to stack. If it is not primitive value, the stack contains a reference to the object in the heap. 
+
+#### Garbage Collection
+
+JavaScript not only allocate memory for objects, they also release the memory. Once the variable or a function is nor required anymore, JavaScript releases the memory it occupied.
