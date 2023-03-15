@@ -59,27 +59,24 @@ To summarize,
 
 At this point, the call stack status is currently -
 
-_____________________
++++++++++++++++++++
 	Call Stack
-_____________________
-
++++++++++++++++++++
 	sayHello()
-
 	greet()
-______________________
++++++++++++++++++++
 
-	- sayhello() is now at the top of the stack and is executed. It prints out __Hello__ to the console and is removed from the stack.
+sayhello() is now at the top of the stack and is executed. It prints out __Hello__ to the console and is removed from the stack.
 
-______________________
++++++++++++++++++++
 	Call Stack
-______________________
-
++++++++++++++++++++
 	greet()
-_______________________
++++++++++++++++++++
 
-	- Now, greet() is at the top of the stack and prints out __I am robot__ to the console and thus removed from the stack.
+Now, greet() is at the top of the stack and prints out __I am robot__ to the console and thus removed from the stack.
 
-The cal stack is empty now and the final output would look like this:
+The call stack is empty now and the final output would look like this:
 
 ```js
 "Hello"
