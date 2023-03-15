@@ -59,20 +59,20 @@ To summarize,
 
 At this point, the call stack status is currently -
 
-+++++++++++++++++++
-	Call Stack
-+++++++++++++++++++
-	sayHello()
-	greet()
-+++++++++++++++++++
++++++++++++++++++++<br>
+	Call Stack<br>
++++++++++++++++++++<br>
+	sayHello()<br>
+	greet()<br>
++++++++++++++++++++<br>
 
 sayhello() is now at the top of the stack and is executed. It prints out __Hello__ to the console and is removed from the stack.
 
-+++++++++++++++++++
-	Call Stack
-+++++++++++++++++++
-	greet()
-+++++++++++++++++++
++++++++++++++++++++<br>
+	Call Stack<br>
++++++++++++++++++++<br>
+	greet()<br>
++++++++++++++++++++<br>
 
 Now, greet() is at the top of the stack and prints out __I am robot__ to the console and thus removed from the stack.
 
