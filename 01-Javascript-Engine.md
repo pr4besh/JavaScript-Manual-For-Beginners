@@ -125,3 +125,66 @@ All variables first point to stack. If it is not primitive value, the stack cont
 #### Garbage Collection
 
 JavaScript not only allocate memory for objects, they also release the memory. Once the variable or a function is nor required anymore, JavaScript releases the memory it occupied.
+
+## Execution Context
+
+Execution Context is an concept of an environment where JavaScript code is evaluated and executed. 
+
+#### Types of Execution Context 
+
+- __Global Execution Context__ : This is the default execution context. It does two thing: ___creates a global object (window object) and sets the value of *this* to global object.___
+
+- __Functional Execution Context__ : New execution context is created every time a function is invoked. Every function has their own execution context, but they are created only when the function is called.
+
+### Execution Stack
+
+JavaScript engine creates a global execution context and pushes it to the current execution stack. When the engine finds the function invocation, it creates a new execution context for that function and pushes it at the top of stack. The engine executes the function which is at the top of stack and removes it from the stack once the execution of that function is completed. 
+
+#### Creation of Execution Stack
+
+The execution stack is created in two phase:
+1. __LexicalEnvironment__ is created.
+2. __VariableEnvironment__ is created.
+
+```js
+ExecutionContext = {
+	LexicalEnvironment = <reference to LexicalEnvironment in memory>,VariableEnvironment: <reference to VariableEnvironment in memory>,
+}
+```
+
+#### Lexical Environment
+
+Lexical Environment is a structure that holds identifier-variable mapping. (_identifier refers to name of variables/functions and the variable is reference to actual object including function object and array object_).
+
+Example:
+```js
+var a = 10;
+var b = 20;
+
+function foo() {
+	console.log("bar");
+}
+```
+
+The lexical environment for above code loos like this:
+```js
+LexicalEnvironment = {
+	a:10,
+	b:20,
+	foo: <reference to foo function in memory>
+} 
+```
+
+Each Lexical Environment has three component:
+- Environment Record
+- Reference to outer environment 
+- *this* binding
+
+
+### Hoisting
+
+Hoisting is the default behavior of JavaScript where it defines all the declarations at the top of scope before code execution. JavaScript only hoists declarations, not initialization.
+
+___Note to Remember: JavaScript declares the variable first in the background, then initialize them.___
+
+
