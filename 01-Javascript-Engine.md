@@ -1,3 +1,26 @@
+**Table of Content**
+
+- [JavaScript Engine](#javascript-engine)
+  - [How engine works? (Summary)](#how-engine-works-summary)
+  - [Inside the JavaScript Engine](#inside-the-javascript-engine)
+    - [Compilation](#compilation)
+    - [Interpretation](#interpretation)
+  - [Just in Time (JIT) compilation in JavaScript](#just-in-time-jit-compilation-in-javascript)
+  - [Call Stack and Memory Heap](#call-stack-and-memory-heap)
+    - [Call Stack](#call-stack)
+    - [Memory Heap](#memory-heap)
+    - [Stack vs Heap](#stack-vs-heap)
+      - [References in JavaScript](#references-in-javascript)
+      - [Garbage Collection](#garbage-collection)
+  - [Execution Context](#execution-context)
+    - [Types of Execution Context](#types-of-execution-context)
+    - [Execution Stack](#execution-stack)
+      - [Creation of Execution Stack](#creation-of-execution-stack)
+    - [Lexical Environment](#lexical-environment)
+  - [Hoisting](#hoisting)
+    - [Hoisting with let/cosnt](#hoisting-with-letcosnt)
+    - [Temproal Dead Zone](#temproal-dead-zone)
+
 # JavaScript Engine
 
 JavaScript engine is a software or a program responsible to run our JavaScript code. Almost every modern day browsers we use have their own JavaScript engine running in the background. Some of the most popular JavaScript engine are -
@@ -33,9 +56,9 @@ Although most people consider JavaScript as an interpreted language, that is no 
 
 In this approach, whole program gets compiled into machine language at once and then it is executed. Unlike the compiled language like C, where the compilation is done ahead of time (before actual execution of code), with JavaScript, the compilation is done during execution.
 
-### Call Stack and Memory Heap
+## Call Stack and Memory Heap
 
-#### Call Stack
+### Call Stack
 
 JavaScript is a single-threaded language i.e. it has only one call stack and it can process one statement at time. The call stack keeps track of functions to be executed. Call Stack follows the **Last in, First Out** principle which means it always process the call on top of the stack at first.
 
@@ -82,25 +105,25 @@ The call stack is empty now and the final output would look like this:
 "I am a robot.";
 ```
 
-#### Memory Heap
+### Memory Heap
 
 JavaScript stores objects and functions in heap. Unlike stack, JavaScript engine doesn't allocate a fixed memory for these objects. Instead, more spaces will be allocated as needed. This is called the **dynamic memory allocation.**
 
-#### Stack vs Heap
+### Stack vs Heap
 
-##### Stack
+**Stack**
 
 - Primitive values and references
 - Size is known at compile time
 - Allocates a fixed amount of memory.
 
-#### Heap
+**Heap**
 
 - Objects and functions
 - Size is known at run time
 - No size limit per object
 
-#### Examples
+**Examples**
 
 ```js
 const myProfile = {
@@ -131,7 +154,7 @@ JavaScript not only allocate memory for objects, they also release the memory. O
 
 Execution Context is an concept of an environment where JavaScript code is evaluated and executed.
 
-#### Types of Execution Context
+### Types of Execution Context
 
 - **Global Execution Context** : This is the default execution context. It does two thing: **_creates a global object (window object) and sets the value of *this* to global object._**
 
@@ -155,7 +178,7 @@ ExecutionContext = {
 }
 ```
 
-#### Lexical Environment
+### Lexical Environment
 
 Lexical Environment is a structure that holds identifier-variable mapping. (_identifier refers to name of variables/functions and the variable is reference to actual object including function object and array object_).
 
@@ -186,7 +209,7 @@ Each Lexical Environment has three component:
 - Reference to outer environment
 - _this_ binding
 
-### Hoisting
+## Hoisting
 
 Hoisting is the default behavior of JavaScript where it defines all the declarations at the top of scope before code execution. JavaScript only hoists declarations, not initialization.
 
@@ -302,6 +325,6 @@ But the error "cannot access before initialization" means our JS engine knows th
 
 _To summarize, variables declared with **let** or **const** are hoisted **without** a default initialization but the variables declared with **var** are hoisted **with** default initialization of undefined._
 
-#### Temproal Dead Zone
+### Temproal Dead Zone
 
 This is a period during execution where _let/const_ variables are hoisted but not accessible.
