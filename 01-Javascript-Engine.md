@@ -18,7 +18,8 @@
       - [Creation of Execution Stack](#creation-of-execution-stack)
     - [Lexical Environment](#lexical-environment)
   - [Hoisting](#hoisting)
-    - [Hoisting with let/cosnt](#hoisting-with-letcosnt)
+    - [Hoisting in var](#hoisting-in-var)
+    - [Hoisting with let/const](#hoisting-with-letconst)
     - [Temproal Dead Zone](#temproal-dead-zone)
 
 # JavaScript Engine
@@ -215,6 +216,8 @@ Hoisting is the default behavior of JavaScript where it defines all the declarat
 
 JavaScript engine treats all variable declarations using _var_ as if they are declared at the top of global scope (if declared outside function) or at the top of functional scope (if declared inside function) regardless of where the actual declaration is made. This simply is **_Hoisting_**.
 
+### Hoisting in var
+
 ```js
 console.log(name); //OUTPUT: undefined
 
@@ -291,7 +294,7 @@ console.log(age); // Output: 23
 
 In the above code, we have a function called hoisting() where we did not declare a variable using let/var/const and another variable declared with let. As mentioned above, _assigning the undeclared variable to the global scope is done by JavaScript_. Hence, age variable is availabe even outsode of scope(globally) but the scope of name variable is within the function, so we get the ReferenceError.
 
-### Hoisting with let/cosnt
+### Hoisting with let/const
 
 In ES6, _let_ does not allow us to use undeclard variables and throws a ReferenceError. This makes sure that we always declare our variable first.
 
