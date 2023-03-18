@@ -267,3 +267,41 @@ console.log(age); // Output: 23
 **So what exactly happened here?**
 
 In the above code, we have a function called hoisting() where we did not declare a variable using let/var/const and another variable declared with let. As mentioned above, _assigning the undeclared variable to the global scope is done by JavaScript_. Hence, age variable is availabe even outsode of scope(globally) but the scope of name variable is within the function, so we get the ReferenceError.
+
+### Hoisting with let/cosnt
+
+In ES6, _let_ does not allow us to use undeclard variables and throws a ReferenceError. This makes sure that we always declare our variable first.
+
+**Example 1:**
+
+```js
+console.log(num);
+//OUTPUT: ReferenceError: Cannot access 'num' before initialization
+
+let num = 20;
+
+console.log(num); //OUTPUT: 20
+```
+
+Let's have a look at another example:
+**Example 2:**
+
+```js
+console.log(number2);
+//OUTPUT: ReferenceError: number2 is not defined.
+
+let number = 20;
+```
+
+**_Do you notice something different in example 1 and 2?_**
+
+The error in example 1 says: _ReferenceError: Cannot access 'num' before initialization_ but the error in example 2 is _ReferenceError: number2 is not defined_
+
+The error "is not defined" means our JavaScript engine has no idea what _number2_ variable is because we never defined it.
+But the error "cannot access before initialization" means our JS engine knows the "num" variable since "num" is hoisted to the top of global scope.
+
+_To summarize, variables declared with **let** or **const** are hoisted **without** a default initialization but the variables declared with **var** are hoisted **with** default initialization of undefined._
+
+#### Temproal Dead Zone
+
+This is a period during execution where _let/const_ variables are hoisted but not accessible.
