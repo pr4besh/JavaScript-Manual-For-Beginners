@@ -8,6 +8,8 @@
     - [Local Scope](#local-scope)
       - [Function Scope](#function-scope)
       - [Block Scope](#block-scope)
+  - [Hoisting](#hoisting)
+    - [Hoisting in var](#hoisting-in-var)
     - [Hoisting with let/const](#hoisting-with-letconst)
     - [Temproal Dead Zone](#temproal-dead-zone)
 
@@ -131,16 +133,16 @@ When we declare a variable with **var**, the variable has either global scope or
 
 But when we declare the variable with **let or const** within a block, we can access that variable only within that block.
 
-````js
+```js
 function getGender() {
-    let gender = "male";
+  let gender = "male";
 
-    if (gender === "male") {
-        console.log(`${gender}: Boy`);
-        //OUTPUT: male: Boy
-    }
-    console.log(gender);
-    //OUTPUT: ReferenceError: gender is not defined.
+  if (gender === "male") {
+    console.log(`${gender}: Boy`);
+    //OUTPUT: male: Boy
+  }
+  console.log(gender);
+  //OUTPUT: ReferenceError: gender is not defined.
 }
 ```
 
@@ -158,7 +160,7 @@ console.log(name); //OUTPUT: undefined
 var name = "Prabesh";
 
 console.log(name); //OUTPUT: "Prabesh"
-````
+```
 
 Normally, we would expect to get an error (ReferenceError) in the first _console.log_ since the variable name wasn't already declared before. But JavaScript hoists all variable declarations at the top.
 
