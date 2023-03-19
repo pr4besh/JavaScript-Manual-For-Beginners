@@ -1,5 +1,11 @@
 **Table of Content**
 
+- [Variables in JavaScript](#variables-in-javascript)
+  - [Hoisting](#hoisting)
+    - [Hoisting in var](#hoisting-in-var)
+    - [Hoisting with let/const](#hoisting-with-letconst)
+    - [Temproal Dead Zone](#temproal-dead-zone)
+
 # Variables in JavaScript
 
 ## Hoisting
