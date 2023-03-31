@@ -14,9 +14,6 @@
     - [Update](#update)
     - [Delete](#delete)
     - [Other Useful Methods to Know](#other-useful-methods-to-know)
-  - [Built-In JavaScript Objects](#built-in-javascript-objects)
-    - [Array Object](#array-object)
-      - [Properties of an Array](#properties-of-an-array)
 
 # Data Types in JavaScript
 
@@ -234,48 +231,6 @@ console.log(user.firstname);
 
 ```js
 ["Cristiano Ronaldo", "Football", "GOAT", "Portugal"];
-```
-
-## Built-In JavaScript Objects
-
-JavaScript offers four buil-in obejcts: `Array`, `Date`, `Math`, and `String`. All these objects have their own special purpose.
-
-### Array Object
-
-JavaScript Arrays are dynamically created special kind of object. Arrays store a numbers of variables including zero, which are known as empty array. These variables do not necesarily need to have same type. The variables stored in array have no names. These variables are accessed using non-negative integer index value.
-
-If an array has `n` variables, we can say that the length of that array is `n`. These variables are referenced using integer index form `0` to `n-1`.
-
-- Arrays are resizable and can contain mixture of different data types.
-- Arrays are zero-indexed i.e. the first element of array is at index `0`.
-- Copying arrays creat e a shallow copy, rather than deep copies.
-
-**_A shallow copy of an object is a copy whose properties share the same references (point to the same underlying values) as those of the source object from which the copy was made. As a result, when you change either the source or the copy, you may also cause the other object to change too — and so, you may end up unintentionally causing changes to the source or copy that you don't expect `[mdn]`._**
-
-**_A deep copy of an object is a copy whose properties do not share the same references (point to the same underlying values) as those of the source object from which the copy was made. As a result, when you change either the source or the copy, you can be assured you're not causing the other object to change too; that is, you won't unintentionally be causing changes to the source or copy that you don't expect`[mdn]`._**
-
-#### Properties of an Array
-
-Array object has one property, `length`. the `length` property indicates the number of component stores in that array.
-
-Synatx:
-
-```js
-arrayObject.length;
-```
-
-Examples:
-
-```js
-const arr1 = [1, 2, 3];
-const arr2 = new Array(9);
-const arr3 = new Array(-10); // Negative numbers are not allowed
-
-console.log(arr1.length); // OUTPUT: 3
-
-console.log(arr2.length); //OUTPUT: 9
-
-console.log(arr3.length); //OUTPUT: RangeError: Invalid array length
 ```
 
  <!-- ?TODOS -->
