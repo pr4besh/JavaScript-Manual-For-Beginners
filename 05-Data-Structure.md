@@ -1,5 +1,15 @@
 **Table of Content**
 
+- [Data Structure in JavaScript](#data-structure-in-javascript)
+  - [Indexed Collection](#indexed-collection)
+    - [Array Object](#array-object)
+      - [Properties of an Array](#properties-of-an-array)
+      - [Adding element to an Array](#adding-element-to-an-array)
+      - [Array Methods](#array-methods)
+    - [TypedArray Object](#typedarray-object)
+  - [Keyed Collections](#keyed-collections)
+    - [Map](#map)
+
 # Data Structure in JavaScript
 
 Groups of data in different forms are one of the fundamental data structures in most of the programming languages. _Normally, groups of data expressed through different data types are known as `Collection`._
@@ -170,6 +180,53 @@ However, when we need to work with raw binary data, we need to use the `TypedArr
 JavaScript typed arrays are array-like objects that provide a mechanism for reading and writing raw binary data in memory buffers. JavaScript typed arrays are divided into _`Buffers`_ and _`Views`_.
 
 - Buffer - An object representing a chunk of data implemented by the `ArrayBuffer` object. It is used to represent a fixed-length binary data buffer. To represent this buffer, we create a view - `DataView` and use it to read and write the contents of the buffer. There are various types of views which represent the most common numeric types -
-  - Int8Array: 8-bit two's complement signed integer
-  - Uint8Array - 8-bit unsigned integer
-  - Uint8ClampedArray: 8-bit unsigned integer
+  - `Int8Array`: 8-bit two's complement signed integer
+  - `Uint8Array` - 8-bit unsigned integer
+  - `Uint8ClampedArray`: 8-bit unsigned integer
+  - `Int16Array`: 16-bit two's complement signed array
+  - `Uint16Array`: 16-bit unsigned array
+  - `Int32Array`: 32-bit two's complement unsigned array
+  - `Uint32Array` : 32-bit unsigned array
+  - `Float32Array`: 32-bit IEEE floating point number (7 significant digits)
+  - `Float64Array`: 64-bit IEEE floating point number (16-bit significant digits)
+  - `BigInt64Array`: 64-bit two's complement signed integer
+  - `BigUint64Array`: 64-bit unsigned integer
+
+## Keyed Collections
+
+A keyed collection is a collection of data represented in **key-value** notation. These values are acccessed and manipulated with their respective keys. We have two kinds of keyed collection in JavaScript: `Map` and `Set`.
+
+### Map
+
+Map object is the collection of key-value pairs. Keys are always unique in Map meaning, a key in a Map object can only appear once.
+
+**Creating a Map Object**
+
+Suppose, we have a list of `user` object as below:
+
+```js
+let virat = { fullName: "Virat Kohli" },
+  smith = { fullName: "Steve Smith" },
+  root = { fullName: "Joe Root" };
+```
+
+Assuming we have to create a map of these players and their country, we can code as below:
+
+```js
+let fabThree = new Map();
+
+console.log(typeof fabThree); // OUTPUT: object
+console.log(fabThree instanceof Map); // OUTPUT: true
+```
+
+The `fabThree` is an instance of `Map` object and it's type is an object as shown above.
+
+**Adding elements to Map**
+
+To assign country to these players, we can use the `set()` method.
+
+```js
+fabThree.set(virat, "India").set(smith, "Australia").set(root, "England");
+```
+
+The `set()` method maps each players with their specified country.
