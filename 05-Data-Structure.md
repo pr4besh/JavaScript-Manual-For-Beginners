@@ -230,3 +230,159 @@ fabThree.set(virat, "India").set(smith, "Australia").set(root, "England");
 ```
 
 The `set()` method maps each players with their specified country.
+
+**Initialize a map with an iterable object**
+
+We can pass an iterable object to the `Map()` constructor.
+
+_Syntax:_
+`let map = new Map([iterable]);`
+
+_Code:_
+
+```js
+let fabThree = new Map([
+  [kohli, "India"],
+  [smith, "Australia"],
+  [root, "England"],
+]);
+```
+
+**Getting an element from a map by Key**
+
+We can use the `get()` method to get an element from a map with key.
+
+```js
+fabThree.get(smith); //OUTPUT: Australia
+```
+
+If we somehow pass a key that does not exist, the `get()` method will return `undefined.`
+
+```js
+fabThree.get(foo); //OUTPUT: undefined
+```
+
+**Checking the existence of an element by Key**
+
+We can use the `has()` method to check if the key exists in the map.
+
+```js
+fabThree.has(bar); //OUTPUT: false
+fabThree.has(root); //OUTPUT: true
+```
+
+**Get the numbers of elements in the map**
+
+We can get the numbers of elements we have in the map with `size` property. The `size` property returns the number of elements in the Map object.
+
+```js
+console.log(fabThree.size); //OUTPUT: 3
+```
+
+**Iterate over map keys**
+
+We can use the `keys()` method to obtain the keys of the `Map` object. The `keys()` method returns a new iterator object that contains the keys of the elements in the map (return value - array).
+
+```js
+let virat = { fullName: "Virat Kohli" },
+  smith = { fullName: "Steve Smith" },
+  root = { fullName: "Joe Root" };
+
+let fabThree = new Map([
+  [virat, "India"],
+  [smith, "Australia"],
+  [root, "England"],
+]);
+
+for (const player of fabThree.keys()) {
+  console.log(player.fullName);
+}
+```
+
+_OUTPUT:_
+
+```
+Virat Kohli
+Steve Smith
+Joe Root
+```
+
+**Iterate over Map values**
+
+We can also iterate over values like with keys using `values()` method.
+
+```js
+let virat = { fullName: "Virat Kohli" },
+  smith = { fullName: "Steve Smith" },
+  root = { fullName: "Joe Root" };
+
+let fabThree = new Map([
+  [virat, "India"],
+  [smith, "Australia"],
+  [root, "England"],
+]);
+
+for (const player of fabThree.values()) {
+  console.log(player);
+}
+```
+
+_OUTPUT:_
+
+```
+India
+Australia
+England
+```
+
+**Iterate over entire map elements**
+
+We van use the `entries()` method to iterate over map elements. The `entries()` method returns an iteratorobject that contains array of `[key, value]` of each element in that Map object.
+
+```js
+let virat = { fullName: "Virat Kohli" },
+  smith = { fullName: "Steve Smith" },
+  root = { fullName: "Joe Root" };
+
+let fabThree = new Map([
+  [virat, "India"],
+  [smith, "Australia"],
+  [root, "England"],
+]);
+
+for (let [player, country] of fabThree.entries()) {
+  console.log(`${player.fullName}: ${country});
+}
+```
+
+_OUTPUT:_
+
+```
+Virat Kohli: India
+Steve Smith: Australia
+Joe Root: England
+```
+
+We can also use `forEach()` instead of `for...of` loop.
+
+```js
+fabThree.foreach((player, country) => {
+  console.log(`${player.fullName}: ${country}`);
+});
+```
+
+**Delete an element by Key**
+
+We can use the `delete()` method to delete an entry in the map.
+
+```
+fabThree.delete(root);
+```
+
+**Delete all elements in the map**
+
+We can clear all the entries in the Map object with the `clear()` method.
+
+```
+fabThree.clear();
+```
