@@ -9,6 +9,8 @@
     - [TypedArray Object](#typedarray-object)
   - [Keyed Collections](#keyed-collections)
     - [Map](#map)
+      - [Weak Map](#weak-map)
+    - [Set](#set)
 
 # Data Structure in JavaScript
 
@@ -386,3 +388,106 @@ We can clear all the entries in the Map object with the `clear()` method.
 ```
 fabThree.clear();
 ```
+
+#### Weak Map
+
+`Weak Map` is similar to `Map`, the differnece being the keys of a `WeakMap` must be an object. This means that when a reference to a key i.e. the object is out of scope, the corresponding value is automatically released from the memory.
+
+The main differences between `Map` and `WeakMap` can be summarised as below -
+
+- Elements of WeakMap cannot be iterated.
+- We cannot clear all elements of WeakMap at once.
+- We cannot check the size of a WeakMap.
+
+### Set
+
+`Set` is used to store a collection of unique values of any type.
+
+_Syntax:_
+
+```
+let set = new Set();
+```
+
+The `Set` constructore also accepts optional iterable object. If we pass an iterable object to the `Set` constructor, all the elements of the iterable object will be aded to the new Set.
+
+**Creating a new Set from an Array**
+
+```js
+let marks = new Set([9, 5, 6, 4, 5, 6, 9, 4, 5]);
+```
+
+Here, marks array contains only 4 distict elements. All of the elements in the `Set` must be unique, therefore it returns a object with these distinct elements.
+
+```js
+console.log(marks);
+```
+
+_OUTPUT:_
+
+```
+Set {9, 5, 6, 4}
+```
+
+```js
+console.log(typeof marks);
+//OUTPUT: Object
+```
+
+The `marks` set is an instance of the `Set` type.
+
+```js
+console.log(marks instanceof Set);
+//OUPTUT: true
+```
+
+We can get the size of the `Set` object with the `size` property.
+
+```js
+console.log(marks.size);
+//OUTPUT: 4
+```
+
+**Adding an elements to a Set**
+
+We can add an element to a Set with the `add()` method.
+
+```js
+marks.add("2");
+
+console.log(marks); //OUTPUT: Set {9,5,6,4,2}
+```
+
+The `add()` method is chainable, so we can add multiple elements to the Set at once.
+
+```js
+marks.add(3).add(10).add(1);
+```
+
+**Checking if a value exists in the Set**
+
+We can check if certain elements exists in the Set with `has()` method. This returns `true` if the elements exists and `false` otherwise.
+
+```js
+console.log(marks.has(9)); //OUTPUT: true
+console.log(marks.has(100)); //OUTPUT: false
+```
+
+**Removing elements from a Set**
+
+We can delete a speicified elements from the Set with `delete()` method. the `delete()` method returns true which indicates that the element has been deleted.
+
+```js
+marks.delete(6);
+
+console.log(marks); //OUTPUT: Set{9,5,4,2}
+```
+
+We can also delete entire elements in the Set with the `clear()` method.
+
+```js
+marks.clear();
+console.log(marks); //OUTPUT: Set{}
+```
+
+`Set` also provides the `keys()`, `values()` and `entries()` methods just like in `Map`. However, both keys and values are same in `Set`.
