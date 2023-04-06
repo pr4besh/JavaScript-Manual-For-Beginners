@@ -1,5 +1,13 @@
 **Table of Content**
 
+- [Loops and Iteration](#loops-and-iteration)
+  - [`while` Loops](#while-loops)
+  - [`do-while` loop](#do-while-loop)
+  - [`for` loops](#for-loops)
+  - [`for...of` loop](#forof-loop)
+  - [`for...in` loop](#forin-loop)
+  - [Controlling Loops](#controlling-loops)
+
 # Loops and Iteration
 
 We regularly face conditions when we need to run our code over and over again until some condition is met. JavaScript provides us several forms to achive this condition.
@@ -84,7 +92,7 @@ Steps involved:
 5. Go back to Step 2.
 6. Output the results.
 
-## for...of loop
+## `for...of` loop
 
 We can use `for...of` statement to loop over an iterable object such as Array, String, Map, Set etc.
 
@@ -138,7 +146,7 @@ for (const num in vars) {
 */
 ```
 
-**Controlling Loops**
+## Controlling Loops
 
 We can have more control over loops with the keywords `continue` and `break` provided by JavaScript.
 
@@ -178,8 +186,4 @@ for (let i = 0; i < even.length; i += 1) {
 }
 
 console.log(indexOfSix);
-```
-
-```
-
 ```
