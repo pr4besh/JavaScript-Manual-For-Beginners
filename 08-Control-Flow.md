@@ -114,3 +114,115 @@ switch (browser) {
 ```
 
 # Exception Handling
+
+Exception Handling is the process of turning a error message into a user-friendly error message. When JavaScript finds an error, JavaScript interpreter looks for exception handling code rather than moving forward to next statement.
+
+## Catching Exceptions
+
+We can add an exception handler with `try...catch` block. The code in the `try` block gets executed first but when the exception occurs, the `catch` block is executed. This helps us to output the error message rather than unexpected termination of the program.
+
+```js
+function divideNumbers(a, b) {
+  try {
+    if (b === 0) {
+      throw new Error("Divide by zero");
+    }
+    const result = a / b;
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+divideNumbers(12, 0); //OUTPUT: Error: Divide by zero
+```
+
+In this example, we're using `try` and `catch` to handle any errors that may occur when dividing two numbers. If the second number is 0, a divide-by-zero error will be thrown, which will cause the code inside the `catch` block to execute.
+
+Inside the `catch` block, we're logging an error message to the console using `console.error` and returning null to indicate that the division failed. By using try-catch in this way, we can ensure that our function doesn't crash when it encounters an error, and instead handles the error gracefully.
+
+**finally**
+
+We can also define an optional `finally` block if we want to run specific code if either of `try` or `cacth` block is executed.
+
+```js
+function divideNumbers(a, b) {
+  try {
+    if (b === 0) {
+      throw new Error("Divide by zero");
+    }
+    const result = a / b;
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+    return null;
+  } finally {
+    console.log("Finished dividing numbers");
+  }
+}
+```
+
+```
+divideNumbers(12,2);
+*OUTPUT:*
+6
+"Finished dividing numbers.
+```
+
+```
+divideNumbers(12,0);
+*OUTPUT:*
+Error: Divide by 0
+"Finished dividing numbers.
+```
+
+The code inside the `finally` block is executed regardless of whether an error was throw or not.
+
+## JavaScript Error Types
+
+- SyntaxError: We face such error when we make some mistake syntatically lilke spellings (e.g. funcion insted of function) or missing brackets.
+
+```js
+if condition) { //SyntaxError
+  conosle.log('hello)
+}
+```
+
+- ReferencError: We face such error when we try to access non-existent variable.
+
+```js
+function doSomething() {
+  console.log(result); //ReferenceError
+}
+```
+
+- TypeError: We face such error when the value is not of expected type.
+
+```js
+const num = 5;
+const str = "hello";
+
+const result = num + str; // TypeError: can't convert 'number' to string
+```
+
+- RangeError: We get this error when a value isn't in the set or range of allowed values.
+
+```js
+const gravity = 9.81;
+console.log(gravity.toFixed(-2)); //RangeError
+```
+
+Typically, `toFixed()` function expects a value to be between 0 and 100 but since we passed a negative number, a `RangeError` is thrown.
+
+- URIError: These are the error thrown by URI-handling functions such as `encodeURI()` and `decodeURI()` when they encounter malformed URIs.
+
+```js
+const takeMe = decodeURIComponent("%"); //URIError
+```
+
+- EvalError: This error is thrown when passing a string containing invalid JavaScript code to the `eval()` function.
+
+```js
+eval("consolr.logg(x)"); //EvalError
+```
