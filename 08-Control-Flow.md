@@ -1,3 +1,15 @@
+**Table of Content**
+
+- [Conditional Statement](#conditional-statement)
+  - [`if` statement](#if-statement)
+  - [`else` statement](#else-statement)
+  - [`else-if` statement](#else-if-statement)
+  - [switch](#switch)
+- [Exception Handling](#exception-handling)
+  - [Catching Exceptions](#catching-exceptions)
+  - [JavaScript Error Types](#javascript-error-types)
+  - [Throwing Custom Exceptions](#throwing-custom-exceptions)
+
 # Conditional Statement
 
 Conditional Statements control behavior in JavaScript and determine weather certain code blocks can run or not. There are different conditional statements in JavaScript such as -
