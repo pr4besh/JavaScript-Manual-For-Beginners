@@ -181,7 +181,7 @@ The code inside the `finally` block is executed regardless of whether an error w
 
 ## JavaScript Error Types
 
-- SyntaxError: We face such error when we make some mistake syntatically lilke spellings (e.g. funcion insted of function) or missing brackets.
+- `SyntaxError`: We face such error when we make some mistake syntatically lilke spellings (e.g. funcion insted of function) or missing brackets.
 
 ```js
 if condition) { //SyntaxError
@@ -189,7 +189,7 @@ if condition) { //SyntaxError
 }
 ```
 
-- ReferencError: We face such error when we try to access non-existent variable.
+- `ReferencError`: We face such error when we try to access non-existent variable.
 
 ```js
 function doSomething() {
@@ -197,7 +197,7 @@ function doSomething() {
 }
 ```
 
-- TypeError: We face such error when the value is not of expected type.
+- `TypeError`: We face such error when the value is not of expected type.
 
 ```js
 const num = 5;
@@ -206,7 +206,7 @@ const str = "hello";
 const result = num + str; // TypeError: can't convert 'number' to string
 ```
 
-- RangeError: We get this error when a value isn't in the set or range of allowed values.
+- `RangeError`: We get this error when a value isn't in the set or range of allowed values.
 
 ```js
 const gravity = 9.81;
@@ -225,4 +225,58 @@ const takeMe = decodeURIComponent("%"); //URIError
 
 ```js
 eval("consolr.logg(x)"); //EvalError
+```
+
+## Throwing Custom Exceptions
+
+We can throw or display our own exceptions when an error occurs with `throw` keyword. The `throw` statement accepts any kind of value or object.
+
+```js
+throw "You encountered an error.";
+throw 20;
+throw true;
+throw { message: "An error", name: "MyError" };
+```
+
+The more practical way of throwing an error would be to create a Error object using the `Error()` constructor.
+
+_`Error()` can be called with or without `new` keyword. Both creates a new `Error` instance._
+
+**Syntax:**
+
+```
+new Error(message)
+
+Error(message)
+```
+
+We can create a generic `Error` object by passing optional messages to the constructor.
+
+```js
+throw new Error("Error has occurred.");
+```
+
+We can also provide optional parameters to the `Error()` constructor.
+
+```
+Error(message, options);
+```
+
+- `options`: This is an object that has folloeing properties:
+  - `cause`: indicates the sepcific cause of the error
+  - `fileName`: path to the file that raised the error
+  - `lineNumber`: line number witin the file on which the error was raised
+
+Yes, we can pass a file name and the line number as the second and third paramter but they are difficult to maintain as our files change.
+
+```js
+throw new Error("Love does not exist.", "script.js", 143);
+```
+
+Although it is fine to throw an error with `Error()` , but it is recommended to use a standaed Error types whenever possible.
+
+```js
+throw new RangeError("Age value must be between 16 to 40");
+
+throw new TypeError("Age must be a number");
 ```
