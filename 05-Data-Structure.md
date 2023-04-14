@@ -491,3 +491,5 @@ console.log(marks); //OUTPUT: Set{}
 ```
 
 `Set` also provides the `keys()`, `values()` and `entries()` methods just like in `Map`. However, both keys and values are same in `Set`.
+
+[<-- Previous [Type Casting]](./04-Type-Casting.md) <div style="text-align: right;"> [Next [Equality Comparision] -->](./06-Equaltiy-Comparisions.md)</div>

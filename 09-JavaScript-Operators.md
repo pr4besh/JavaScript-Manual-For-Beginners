@@ -242,3 +242,5 @@ In the case of `0 in fruits`, it is checking whether the fruits array has a prop
 However, "apple" in fruits is checking whether the fruits array has a property/key of "apple", which it does not, since the elements of the array are not considered keys. Therefore, the expression "apple" in fruits returns `false`.
 
 To check if a value exists in an array, you can use the `includes()` method instead: `fruits.includes("apple")` would return `true` because the value "apple" exists in the array.
+
+[<-- Previous [Control Flow]](./08-Control-Flow.md) <div style="text-align: right;"> [Next [JavaScript Functions] -->](./10-JavaScript-Functions.md)</div>

@@ -205,3 +205,5 @@ Each Lexical Environment has three component:
 - Environment Record
 - Reference to outer environment
 - _this_ binding
+
+[Next [JavaScript Variables] -->](./02-All-About-Variables.md)

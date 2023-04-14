@@ -115,3 +115,5 @@ conole.log(typeof result); //OUTPUT: Boolean
 ## Type Conversion vs Type Coercion
 
 The key difference between type coercion and type conversion is that type conversion is always implicit whereas type conversion can either be implicit or explicit.
+
+[<-- Previous [Data Types]](./03-Data-Types.md) <div style="text-align: right;"> [Next [Data Structure] -->](./05-Data-Structure.md)</div>

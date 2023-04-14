@@ -267,3 +267,7 @@ _To summarize, variables declared with **let** or **const** are hoisted **withou
 ### Temproal Dead Zone
 
 This is a period during execution where _let/const_ variables are hoisted but not accessible.
+
+<br />
+
+[<-- Previous [JavaScript Engine]](./01-Javascript-Engine.md) <div style="text-align: right;"> [Next [Data Types] -->](03-Data-Types.md)</div>

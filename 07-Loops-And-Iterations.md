@@ -187,3 +187,5 @@ for (let i = 0; i < even.length; i += 1) {
 
 console.log(indexOfSix);
 ```
+
+[<-- Previous [Equality Comparision]](./06-Equaltiy-Comparisions.md) <div style="text-align: right;"> [Next [Control Flow] -->](./08-Control-Flow.md)</div>

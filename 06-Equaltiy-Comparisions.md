@@ -293,3 +293,5 @@ Here, deep equality function correctly determines that both `user1` and `user2` 
 - We can also manually compare the values of properties in the object by accessing the properties of those objects.
 - We use shallow equality when the objects to be compared have a lot of properties or if the object is determined at the runtime.
 - We use deep equality check if the compared objects have nested objects.
+
+[<-- Previous [Data Structure]](./05-Data-Structure.md) <div style="text-align: right;"> [Next [Loops and Iteration] -->](./07-Loops-And-Iterations.md)</div>

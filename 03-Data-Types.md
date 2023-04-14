@@ -236,3 +236,5 @@ console.log(user.firstname);
  <!-- ?TODOS -->
  <!-- Prototypal Inheritance -->
  <!-- Object Protoype -->
+
+[<-- Previous [JavaScript Variables]](./02-All-About-Variables.md) <div style="text-align: right;"> [Next [Type Casting] -->](./04-Type-Casting.md)</div>

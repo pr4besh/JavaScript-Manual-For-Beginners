@@ -292,3 +292,5 @@ throw new RangeError("Age value must be between 16 to 40");
 
 throw new TypeError("Age must be a number");
 ```
+
+[<-- Previous [Loops and Iteration]](./07-Loops-And-Iterations.md) <div style="text-align: right;"> [Next [JavaScript Operator] -->](./09-JavaScript-Operators.md)</div>
