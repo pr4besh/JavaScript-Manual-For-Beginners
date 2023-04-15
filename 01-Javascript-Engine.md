@@ -37,7 +37,7 @@ JavaScript engine is a software or a program responsible to run our JavaScript c
 
 ## Inside the JavaScript Engine
 
-Computers can only understand binary (0s and 1s) which is the reason our computer program needs to be converted into machine code. We convert our program into machine code via compilation or interpretation.
+Computers can only understand binary (0s and 1s) which is the reason our computer program needs to be converted into binary which is also called machine code. We convert our program into machine code via compilation or interpretation.
 
 #### Compilation
 
