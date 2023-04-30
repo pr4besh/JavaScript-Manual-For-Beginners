@@ -195,12 +195,13 @@ function myFunction() {
   console.log(var1);
 }
 
-console.log(x); //OUTPUT: x is not defined
+myFunction();
+console.log(var1); //OUTPUT: var1 is not defined
 ```
 
 ### Lecxical Scoping
 
-Lexical scoping is a key concept in JavaScript that determines how variables and functions are accessed within nested scopes, based on their position in the code.
+Lexical scoping is a key concept in JavaScript that determines how variables and functions are accessed within nested scopes, based on their position in the code. In simple terms, lexical scoping means that we can access the variables of outer scopes from inside our inside scope.
 
 In JavaScript, every time you create a new function, it creates a new scope. When you reference a variable or function within a particular scope, JavaScript looks for it first within that scope. If it can't find it there, it looks in the next outer scope, and so on until it reaches the global scope.
 
@@ -213,16 +214,41 @@ function myFunction() {
   function innerFunction() {
     var innerVar = "Inner Scope";
     console.log(outerVar); // Accessible from inner scope
+    //OUTPUT: "Outer Scope"
   }
 
   innerFunction();
   console.log(innerVar); // Not Accessible from outer scope
+  // OUTPUT: ReferenceError: innerVar is not defined
 }
 
 myFunction();
 ```
 
 In the example above, `myFunction` creates a new scope that has `outerVar` variable and `innerFunction` function. `innerFunction()` creates a new scope that has `innerVar` variable. When `innerFunction()` is called, it logs the value of `outerVar` which is in outer scope but we will get an error when we try to log the value of `innerVar` because it is not accessible outside the inner scope.
+
+### Closures
+
+Closures in JavaScript are created when a function is defined inside another function and the inner function is returned or passed as parameter to another function.
+
+Closure is a function that has access to variables in its outer function's scope, even after outer function has returned. This allows inner function to continue to access and manipulate outer function's variables even after the outer function has finished executing. In simple terms, closure is a function that remembers the variables from the place it is defined, regardless of where it is executed later.
+
+```js
+function outerScope() {
+  var outerVar = "outer scope";
+
+  function innerScope() {
+    console.log(outerVar); // OUTPUT: "outer scope"
+  }
+
+  return innerScope;
+}
+
+var inner = outerScope();
+inner(); // OUTPUT: "outer scope"
+```
+
+In this example, `innerScope()` is defined inside `outsideScope()` and has access to the `outerVar` variable. When the `outerScope()` function is called and `innerScope()` function is returned,a closure is created that allows `innerScope()` function to access the `outerVar` variable even though `outerScope()` function has finished executing.
 
 ## IIFEs
 
@@ -267,3 +293,68 @@ Now, we can rewrite the code as below:
 ```
 
 Since, we do not intend to call the function again after the invocation, we do not need to give the function a name anymore.
+
+## Recursion
+
+Recursion is a programming pattern where a function calls itself repeatedly until certain condition is met. This is a powerful technique that allows us to solve complex problems by breaking them down into smaller, more simple parts.
+
+A recursive function typically has two parts: `base case` and `recursive case`. The base case is the condition that stops the recursion and returns a value. The recursive case is where the fucntion call itself with a modified arguments.
+
+Let's discuss it with a simple function that raises a number to a natural power of n.
+Example:
+
+```
+power(2,3) = 8 // 2*2*2 == 8
+```
+
+Let's implement this function with `for` loop:
+
+```js
+function power(a, n) {
+  let result = 1;
+  for (let i = 0; i < n; i++) {
+    result *= a;
+  }
+  return result;
+}
+
+console.log(power(2, 3)); //OUTPUT: 8
+```
+
+This is how we normally approach this problem.
+Now, let's think recursively and simplify the task.
+
+```js
+function power(a, n) {
+  if (n == 1) {
+    // base case
+    return a;
+  } else {
+    // recursive case
+    return a * power(a, n - 1);
+  }
+}
+
+console.log(power(2, 3)); //OUTPUT: 8
+```
+
+In this example, the base case is when `n` equals to 1 and the function returns `a`.The recursive case is when `n` is greater than 0, and the function calls itself with `a` and `n-1` as the argument.
+
+When the function is called with `power(2,3)`, it will recursively call itslef with `power(2,2)`, `power(2,1)` until it reaches the base case of `power(2,0)`.
+
+We can also rewrite the same code using ternary operator replacing the if-else statement.
+
+```js
+function power(a, n) {
+  return n == 1 ? x : x * power(a, n - 1);
+}
+```
+
+## JavaScript Built-In Functions
+
+### Number Methods
+
+- `constructor()`: returns the function that created the object's instance. By default, this is a Number object.
+- `toFixed()`: formats a number with a specific number of digits to the right of decimal.
+- `toString()`: returns the string representation of the number's value
+- `valueOf()`: returns the number's value
