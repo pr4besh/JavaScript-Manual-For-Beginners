@@ -1,3 +1,24 @@
+**Table of Content**
+
+- [Functions](#functions)
+  - [Function Declarations and Function Expression](#function-declarations-and-function-expression)
+    - [Difference between function declaration and function expression](#difference-between-function-declaration-and-function-expression)
+  - [Function Parameters](#function-parameters)
+    - [Default Parameter](#default-parameter)
+    - [Rest Parameter](#rest-parameter)
+    - [Difference Between Arguments and Rest Parameter](#difference-between-arguments-and-rest-parameter)
+  - [Arrow Functions](#arrow-functions)
+  - [Function Scope](#function-scope)
+    - [Lecxical Scoping](#lecxical-scoping)
+    - [Closures](#closures)
+  - [IIFEs](#iifes)
+  - [Recursion](#recursion)
+  - [JavaScript Built-In Functions](#javascript-built-in-functions)
+    - [Number Methods](#number-methods)
+    - [Boolean Methods](#boolean-methods)
+    - [String Object](#string-object)
+    - [Array Methods](#array-methods)
+
 # Functions
 
 A `function` is a block of code that runs when the function is called.
@@ -358,3 +379,34 @@ function power(a, n) {
 - `toFixed()`: formats a number with a specific number of digits to the right of decimal.
 - `toString()`: returns the string representation of the number's value
 - `valueOf()`: returns the number's value
+
+### Boolean Methods
+
+- `toSource()`: returns a string containing the source of the Boolean object
+- `toString()`: returns a string of either `true` or `false` depending upon the value of object
+- `valueOf()`: returns the primitive value of a Boolean object
+
+### String Object
+
+- `charAt()`: returns the character at specified index
+- `concat()`: combines the text of two strings and returns a new string
+- `indexOf()`: returns the index of first occurence of specified value within an array of string (`-1` if not found)
+- `lastIndexOf()`: returns the index of last occurence od specified calue within an array of string (`-1` if not found)
+- `length()`: returns the length of string
+- `match()`: used to match regular expression against a string
+- `replace()`: used to find a match between regular expression and a string, and replace the matched substring with a new substring
+- `slice()`: splits a string object into array of string by seperating the string into substrings
+
+### Array Methods
+
+- `concat()`: returns a new array compromised of the array joined with other array(s)
+- `every()`: returns `true` if every element in this array satisfies the provided testing fucntion
+- `filter()`: creates a new array with all elements of this array for which the provided filtering function returns `true`
+- `indexOf()`: returns the first index of an element within the array equal to specified value (`-1` if not found)
+- `join()`: joins all the elements of an array into string
+- `pop()`: removes and returns the last element from an array
+- `push()`: adds one or more elements to the end of an array and returns the new length of the array
+- `shift()`: removes and returns the first element of the array
+- `unshift()`: adds one or more elements to the front of array and returns the new length of array
+- `slice()`: extracts a section of array and returns a new array
+- `splice()`: add, remove or replace elements in an array based on their index
