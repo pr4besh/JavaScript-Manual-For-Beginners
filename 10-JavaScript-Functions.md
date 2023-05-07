@@ -410,3 +410,5 @@ function power(a, n) {
 - `unshift()`: adds one or more elements to the front of array and returns the new length of array
 - `slice()`: extracts a section of array and returns a new array
 - `splice()`: add, remove or replace elements in an array based on their index
+
+[<-- Previous [Operators in JavaScript]](./09-JavaScript-Operators.md) <div style="text-align: right;"> [Next [JavaScript `this` Keyword] -->](./11-JavaScript-%60this%60-Keyword.md)</div>

@@ -78,20 +78,16 @@ To summarize, - At first, greet() is added to the call stack. - greet() then cal
 
 At this point, the call stack status is currently -
 
-+++++++++++++++++++<br>
-Call Stack<br>
-+++++++++++++++++++<br>
-sayHello()<br>
-greet()<br>
-+++++++++++++++++++<br>
+| Call Stack |
+| ---------- |
+| sayHello() |
+| greet()    |
 
 sayhello() is now at the top of the stack and is executed. It prints out **Hello** to the console and is removed from the stack.
 
-+++++++++++++++++++<br>
-Call Stack<br>
-+++++++++++++++++++<br>
-greet()<br>
-+++++++++++++++++++<br>
+| Call Stack |
+| ---------- |
+| greet()    |
 
 Now, greet() is at the top of the stack and prints out **I am robot** to the console and thus removed from the stack.
 
