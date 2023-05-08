@@ -1,3 +1,15 @@
+- [`this` Keyword](#this-keyword)
+  - [`this` in function](#this-in-function)
+  - [`this` in methods](#this-in-methods)
+  - [`this` in event handlers](#this-in-event-handlers)
+  - [`this` in arrow functions](#this-in-arrow-functions)
+- [Function Borrowing](#function-borrowing)
+  - [Implicit Binding](#implicit-binding)
+  - [Explicit Binding](#explicit-binding)
+    - [🤝 bind()](#-bind)
+    - [🤙 call()](#-call)
+    - [👏 apply()](#-apply)
+
 # `this` Keyword
 
 In simple terms, `this` keyword in JavaScript refers to an object upon which a function is invoked. This means that `this` can only be used in a function, or globally.
@@ -288,3 +300,5 @@ By using `apply()`, we're essentially invoking the `greet` function in the conte
 
 - By default, the methods of an object are implicitly bounded to the object itself, and we can access them using the dot (.) operator.
 - To access the methods of other objects, we need to explicitly bind them to the object using the `bind()`, `call()`, or `apply()` methods, with each one of them having its own use cases.
+
+[<-- Previous [JavaScript Functions]](./10-JavaScript-Functions.md) <div style="text-align: right;"> [Next [Asnychronous JavaScript] -->](./12-Asynchronous-JavaScript.md)</div>
