@@ -221,3 +221,236 @@ In this example, we call the `downloadImage` function with a URL and a `process(
 Once the image is downloaded, the `callback` function is called with the url of the downloaded image as an argument. In this case, the `callback` fucntion is the `process` function. The `process` function is executed asynchronously, after the image is downlaoded and the `callback` fucntion is called.
 
 _Note_: `setTimeout` is not a part of JavaScript engine but it is a part of Web APIs (in browsers).
+
+## Promises
+
+Promises are alo a way to handle asynchronous functions in JavaScript. Promises provides us a cleaner and more structured way to write asynchronous code than callbacks. A `Promise` is an object that represents the **success** or **failure** of an asynchronous code and provides a way to handle the result of that operation once it is completed.
+
+A `Promise` has three possible states: `Pending`, `Fulfilled`, `Rejected`. `Promise` starts in `Pending` state and will either be `Fulfilled` with a value or `Rejected` with an error message.
+
+- _pending_: initial state
+- _fulfilled_: operation was completed successfully
+- _rejected_: operation failed
+
+When we create a new `Promise`, we pass in a function that takes two arguments, `resolve` and `reject`. These arguments are functions themselves that we can call when the asynchronous operation is complete.
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  // Asynchronus Code Here
+  if (/* successfull operation */) {
+    resolve(/* result */)
+  } else {
+    reject(/* reason for failure */)
+  }
+})
+```
+
+Inside the `Promise` function, we can perform some asynchronous operations such as making an HTTP request or reading a file from the disk. If the operation succeeds, we can call the `resolve` function with the result of the operation. If the operation fails, we can call the `reject` function with the reason of failure.
+
+Once the `Promise` is created, we can attach one or more `then` methods to ot. The `then` method takes one or two arguments: a function to be called when the `Promise` is resolved, and optionally a fucntion to be called when the `Promise` is rejected.
+
+```js
+myPromise
+  .then((result) => {
+    // Do something with the result
+  })
+  .catch((error) => {
+    // Handle the error
+  });
+```
+
+When the asynchronous operation completes, the `Promise` is either resolved or rejected. If it's resolved, the function passed to `then` method is called with the result of the operation as its argument. If it is rejected, the function passed to the `catch` method is called with the reason for the failure as its argument.
+
+### `.then()` promise handler
+
+The `.then()` method is used to handle the _fulfilled_ or _rejected_ state of promise. We can think `then` as "_this works and then do this with the data returned from the promise_". It takes two optional arguments: a callback function (result) to be executed when the promise the _fulfilled_, and a callback fucntion (error) to be executed when the promise is _rejected_.
+
+```js
+promise.then(
+  (result) => {
+    console.log(result);
+  },
+  (error) => {
+    console.log(error);
+  }
+);
+```
+
+When a promise is fulfiled, we can access the resolved data by passing just one argument.
+
+```js
+promise.then((result) => {
+  console.log(result);
+});
+```
+
+When the promise fails and we are interested in only the error, we can pass `null` to the first argument and access the error.
+
+```js
+promise.then(null, (error) => {
+  console.log(error);
+});
+```
+
+It's bit odd to pass `null` value explicily for an error case so, we have another method `.catch()` for this purpose. We can think of `catch` as "_this does not work so, catch the error so it does not break the code_.
+
+### `.catch()` promise handler
+
+A `catch()` promise handler is a function that is executed when a promise is rejected. It is a method that can be called on a promise object and takes a single argument. As mentioned above, it is a much better syntax to handle the errors than usign the `then()` method.
+
+When a promise is rejected, it will skip the `then()` methods and jump directly to the `catch()` method. The `catch()` handler can be used to handle errors and exceptions that may occur.
+
+```js
+promise.then(result => {
+    // do something with result
+  }
+  .catch(error => {
+    // handle the error
+  })
+)
+```
+
+### `.finally()` promise handler
+
+The `finally()` promise handler is a function that is executed regardless of whether a promise is resolved or rejected. It is a method that can be called on promise object and takes no arguments.
+
+The `finally` handler is useful for clean up taks such as resetting state, that needs to be executed regardless of whether the promise is succeessful or not.
+
+```js
+const fs = require("fs");
+
+fs.promises
+  .open("myfile.txt", "r")
+  .then((file) => {
+    // do something with the file
+  })
+  .catch((error) => {
+    // handle the error
+  })
+  .finally(() => {
+    // close the file
+    fs.promises.close(file);
+  });
+```
+
+## ⛓️ Promise Chaining
+
+The promise handlers `then`, `catch` and `finally` helps us to handle any number of asynchronous operations that depend on each other. We can chain the handler methods to pass a value or error from one promise to another.
+
+Promise chaining is a technique used in JavaScript to handle the asynchronous taks in a sequential and organized manner. It involves chaining multiple promises together in specific order to execute a series of asynchronous tasks.
+
+Every promises gives us a `.then()` handler method. Every rejected promise gives us a `.catch()` handler. After creating a promise, we can call the `.then()` method to handle the value.
+
+```js
+// Creating a Promise
+let promise = new Promise((resolve, reject) => {
+  resolve("Resolving a Promise.");
+});
+
+promise.then((value) => {
+  console.log(value); // Output: Resolving a Promise.
+});
+```
+
+We can handle the rejected promise with `.catch()` handler.
+
+```js
+// Creating a Promise
+let promise = new Promise((resolve, reject) => {
+  reject(new Error("Rejecting a Promise."));
+});
+
+promise.catch((error) => {
+  console.log(error); // Output: Error: Rejecting a Promise.
+});
+```
+
+The `.then()` method allows us to handle the result of a Promise once it is completed. There are three main things we can do with the result.
+
+- 💡 `Return another Promise`: If we need to perform asynchronous operation that depends on the result of the previous `Promise`, we can return another `Promsie` object from the `.then()` method. This allows us to chain multiple Promises together and perform a series of asynchronous operations.
+
+```js
+const getUser = new Promise((resolve, reject) => {
+  const user = {
+    name: "Lionel Messi",
+    club: "PSG",
+    country: "Argentina",
+  };
+  resolve(user);
+});
+
+getUser
+  .then((user) => {
+    console.log("You picked " + user.name + " from " + user.country); // Output: You picked Lionel Messi from Argentina
+    // Return a new Promise
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // fetching the rating based on user
+        resolve(93);
+      }, 1000);
+    });
+  })
+  .then((rating) => {
+    console.log("Your player is rated " + rating + ".");
+    // Output:  Your player is rated 93.
+  });
+```
+
+- 💡`Return a Value`: In some situations, we may not have to make an asynchronous call to get a value. We can simply return a simple value from the `.then()` method rather than returning a promise in these situations.
+
+```js
+const getUser = new Promise((resolve, reject) => {
+  const user = {
+    name: "Lionel Messi",
+    club: "PSG",
+    country: "Argentina",
+  };
+  resolve(user);
+});
+
+getUser
+  .then((user) => {
+    console.log("You picked " + user.name + " from " + user.country); // Output: You picked Lionel Messi from Argentina
+    // Return a simple value
+    return user.club;
+  })
+  .then((club) => {
+    console.log("Your player plays for " + club + ".");
+    // Output:  Your player plays for PSG.
+  });
+```
+
+- 🚫 `throw and error`: If there is an error in the Promise chain and we want to stop the execution of the chain, we can throw an error from the `.then()` method. This will cause the Promise chain to skip all remaining `.then()` methods and jump to nearest `.catch()` method to handle error.
+
+```js
+const getUser = new Promise((resolve, reject) => {
+  const user = {
+    name: "Lionel Messi",
+    club: "PSG",
+    country: "Argentina",
+    position: ["st", "rw", "cam"],
+  };
+  resolve(user);
+});
+
+getUser
+  .then((user) => {
+    console.log("You picked " + user.name + " from " + user.country); // Output: You picked Lionel Messi from Argentina
+    //Checking the postiton user can play
+    if (!user.position.includes("def")) {
+      throw new Error("You player cannot play in defending position.");
+    }
+    // Return a simple value
+    return user.club;
+  })
+  .then((club) => {
+    console.log("Your player plays for " + club + ".");
+    // Output:  Your player plays for PSG.
+  })
+  .catch((error) => {
+    console.log(error);
+    // Output - Error: You player cannot play in defending position.
+  });
+```
+
+To summarize, the `.then()` method allows us to handle the result of a Promise and perform additional operations based on the result. We can return another promise, a value or throw an error, depending upon the situation.
