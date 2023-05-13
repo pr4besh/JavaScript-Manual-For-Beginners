@@ -1,3 +1,17 @@
+- [Understanding Asynchronous JavaScript](#understanding-asynchronous-javascript)
+  - [Callbacks](#callbacks)
+    - [Synchronous Callbacks](#synchronous-callbacks)
+    - [Asynchronous Callbacks](#asynchronous-callbacks)
+  - [Promises](#promises)
+    - [`.then()` promise handler](#then-promise-handler)
+    - [`.catch()` promise handler](#catch-promise-handler)
+    - [`.finally()` promise handler](#finally-promise-handler)
+    - [Promise Chaining ⛓️](#promise-chaining-️)
+  - [Async/Await](#asyncawait)
+    - [`async`](#async)
+    - [`await`](#await)
+    - [Error Handling `async`/`await`](#error-handling-asyncawait)
+
 # Understanding Asynchronous JavaScript
 
 JavaScript is single-threaded programming language which means only one thing can happen at a time. This helps us to simplify our code but this also means that we can't perform long operations such as reading from a file without blocking the main thread. That's where asynchronous JavaScript helps us.
@@ -333,7 +347,7 @@ fs.promises
   });
 ```
 
-## ⛓️ Promise Chaining
+### Promise Chaining ⛓️
 
 The promise handlers `then`, `catch` and `finally` helps us to handle any number of asynchronous operations that depend on each other. We can chain the handler methods to pass a value or error from one promise to another.
 
@@ -454,3 +468,72 @@ getUser
 ```
 
 To summarize, the `.then()` method allows us to handle the result of a Promise and perform additional operations based on the result. We can return another promise, a value or throw an error, depending upon the situation.
+
+## Async/Await
+
+Async/Await is the most straightforward way to deal with asyanchronous operations in JavaScript. JavaScript provides us with two keywords: `async` and `await` that makes the use of promises musch easier. In simple terms, we use `async` to return a promise and use `await` to wait and handle a promise. This helps us to write cleaner and efficinet code.
+
+Let us consider a program that gets data from the server, process it and returns a promise.
+
+```js
+function getUser(name) {
+  return server.registeredUsers().then((user) => {
+    const verified = user.map((person) => person.name);
+    return verified;
+  });
+}
+```
+
+Let's rewrite this program using `async` and `await`.
+
+```js
+async function getUser(name) {
+  const user = await server.registeredUsers();
+  const verified = user.map((person) => person.name);
+  return verified;
+}
+```
+
+### `async`
+
+The `async` keyword lets the JavaScript engine know that we are declaring an asynchronous function. When a function is marked as `async`, it returns a `Promise`. Async functions are just the syntatic sugar for `Promises`.
+
+```js
+const myAsyncFucntion = async () => {
+  // perform asynchronous tasks and return a Promise
+};
+```
+
+```js
+myArray.forEach(async (item) => {
+  // fo something asynchronous for each item in myArray
+});
+```
+
+### `await`
+
+`await` keyword tells the JavaScript engine to wait for asynchronus operations to complete before continuing the function. The `await` keyword is used to get a value from a function where we would normally use `.then()` promise handler. Instead of calling the `.then()` method, we can simply assign a variable to the result using `await`.
+
+### Error Handling `async`/`await`
+
+We know that the Promsies have `catch()` method for handling rejected promises. Since, `async` functions just return a promise, we can simply append a `catch()` method at the end of function call.
+
+```js
+myAsyncFunction().catch((error) => {
+  console.log(error);
+});
+```
+
+We can also use the `try`/`catch` block to handle the error directly inside the `async` function.
+
+```js
+async function getUser(name) {
+  try {
+    const user = await server.registeredUsers();
+    const verified = user.map((person) => person.name);
+    return verified;
+  } catch (error) {
+    // handler the error here
+  }
+}
+```
