@@ -9,3 +9,7 @@
 - [Loops and Iteration](07-Loops-And-Iterations.md)
 - [JavaScript Control Flow](08-Control-Flow.md)
 - [JavaScript Operators](09-JavaScript-Operators.md)
+
+
+Just visit the link foe better reading experience:
+https://javascript-manual.netlify.app/
